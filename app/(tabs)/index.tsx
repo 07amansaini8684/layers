@@ -1,56 +1,116 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, SafeAreaView, Text } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { View } from 'react-native';
+import Box from '@/components/Box';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView className="px-5 h-screen bg-zinc-100">
+      <View className='px-5 mt-10 py-10'>
+        <View className="rounded-lg ">
+          <Text className="text-4xl font-bold text-gray-800">How the want to repay your loan</Text>
+          <Text>
+            something about the loan.
+          </Text>
+        </View>
+
+
+        <View className='bg-[#EEECF2] mt-10 rounded-lg p-5 flex flex-col gap-5 items-center justify-between'>
+          <View className='flex flex-row items-center gap-5'>
+            <View>
+              <Text className="text-xl font-bold  text-gray-800">How much do you want to repay?</Text>
+             <Text className='text-[#9c9c9c]'>something account things.. </Text>
+            </View>
+            <View className='bg-[#F2906B] px-4 py-2 rounded-full'>
+              <Text className='text-white '>SignUp</Text>
+            </View>
+          </View>
+
+          <View className='py-2 flex flex-row gap-5 items-center justify-between'>
+            <View className='bg-[#1a1919] px-6 py-3 rounded-full'>
+              <Text className='text-white font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-whi px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-[#F2906B] px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View className='bg-[#EEECF2] mt-5 rounded-lg p-5 flex flex-col gap-5 items-center justify-between'>
+          <View className='flex flex-row items-center gap-5'>
+            <View>
+              <Text className="text-xl font-bold  text-gray-800">How much do you want to repay?</Text>
+              <Text className='text-[#9c9c9c]'>something account things.. </Text>
+            </View>
+            <View className='bg-[#F2906B] px-4 py-2 rounded-full'>
+              <Text className='text-white '>SignUp</Text>
+            </View>
+          </View>
+
+          <View className='py-2 flex flex-row gap-5 items-center justify-between'>
+            <View className='bg-[#F2906B] px-6 py-3 rounded-full'>
+              <Text className='text-white font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-white px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-white px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View className='bg-[#EEECF2] mt-5 rounded-lg p-5 flex flex-col gap-5 items-center justify-between'>
+          <View className='flex flex-row items-center gap-5'>
+            <View>
+              <Text className="text-xl font-bold  text-gray-800">How much do you want to repay?</Text>
+              <Text className='text-[#9c9c9c]'>something account things.. </Text>
+            </View>
+            <View className='bg-[#fffbfa] px-4 py-2 rounded-full'>
+              <Text className='text-[] '>SignUp</Text>
+            </View>
+          </View>
+c
+          <View className='py-2 flex flex-row gap-5 items-center justify-between'>
+            <View className='bg-[#F2906B] px-6 py-3 rounded-full'>
+              <Text className='text-white font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-white px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+            <View className='bg-white px-6 py-3 rounded-full'>
+              <Text className='text-black font-semibold'>
+                SCBIA
+              </Text>
+            </View>
+          </View>
+        </View>
+
+      </View>
+    </SafeAreaView>
   );
 }
 
