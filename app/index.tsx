@@ -107,7 +107,7 @@ export default function HomeScreen() {
           </View>
 
           <View className="w-full py-8 px-4 rounded-full absolute bottom-12 left-0  bg-zinc-900">
-            <Text className="text-white text-center font-semibold">
+            <Text className="text-white text-3xl text-center font-semibold">
               Compelete something
             </Text>
           </View>
