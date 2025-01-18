@@ -121,7 +121,7 @@ const App = () => {
                     <View className='flex flex-row items-center gap-5'>
                         <View>
                             <Text className="text-xl font-bold text-gray-800  ">How much do you want to repay?</Text>
-                            <Text className='text-[#9c9c9c] text-xl py-2'>something account things.. </Text>
+                            <Text className='text-[#9c9c9c] text-xl py-2'>something accout things.. idk</Text>
                         </View>
                         <View className='bg-[#fffbfa] px-4 py-2 rounded-full'>
                             <Text className='text-[#F2906B]'>SignUp</Text>
