@@ -2,38 +2,30 @@ import React, { useCallback, useRef, useMemo, useEffect } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet";
-import walletImg from "@/assets/images/wallet.png";
 import { data } from "../constants/dummyData"
 import { LinearGradient } from 'expo-linear-gradient';
 import { CreditCard, DollarSign } from 'lucide-react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PaymentPlans from "@/components/PaymentsPlan";
+import { RenderSmallCards } from "@/components/SmallCards";
 const App = () => {
     // hooks
     const firstSheetRef = useRef<BottomSheet>(null);
     const secondSheetRef = useRef<BottomSheet>(null);
 
     // variables
-    const snapPoints = useMemo(() => ["10%", "25%", "50%"], []);
-    const secondSnapPoints = useMemo(() => ["20%", "40%"], []);
+    const snapPoints = useMemo(() => ["10%", "25%", "50%", "60%"], []);
+    const secondSnapPoints = useMemo(() => ["20%", "40%", "50%"], []);
 
     // callbacks for the first bottom sheet
-    const handleFirstSheetChange = useCallback((index: string) => {
-        console.log("First Sheet Index:", index);
-    }, []);
+
     const handleFirstOpenPress = useCallback(() => {
-        firstSheetRef.current?.snapToIndex(2); // Open the first bottom sheet
-    }, []);
-    const handleFirstClosePress = useCallback(() => {
-        firstSheetRef.current?.close(); // Close the first bottom sheet
+        firstSheetRef.current?.snapToIndex(3); // Open the first bottom sheet
     }, []);
 
     // callbacks for the second bottom sheet
-    const handleSecondSheetChange = useCallback((index: string) => {
-        console.log("Second Sheet Index:", index);
-    }, []);
     const handleSecondOpenPress = useCallback(() => {
-        secondSheetRef.current?.snapToIndex(2); // Open the second bottom sheet
+        secondSheetRef.current?.snapToIndex(3); // Open the second bottom sheet
     }, []);
     const handleSecondClosePress = useCallback(() => {
         secondSheetRef.current?.close(); // Close the second bottom sheet
@@ -86,7 +78,7 @@ const App = () => {
                     <View className="mb-8 mx-4">
                         <LinearGradient
                             colors={['#ffffff', '#f8f8f8']}
-                            className="mt-10 p-4 border-[2px] border-zinc-300 rounded-lg overflow-hidden"
+                            className="mt-10 p-4 border-[2px] border-zinc-200 rounded-lg overflow-hidden"
                         // style={{
                         //     shadowColor: '#000',
                         //     shadowOffset: { width: 0, height: 6 },
@@ -153,6 +145,12 @@ const App = () => {
                             </View>
                         </LinearGradient>
                     </View>
+                    {/* this was the main card... */}
+
+                    {/* Small Cards Grid */}
+                    <View className="mt-2">
+                        <RenderSmallCards />
+                    </View>
 
                     {/* CTA Button */}
                     <View className="w-full mt-auto mb-8">
@@ -194,29 +192,50 @@ const App = () => {
                 <BottomSheetView style={styles.contentContainer}>
                     <View className="w-full flex flex-col gap-5 p-2">
                         {/* Content for the second bottom sheet */}
-                        <View className="flex flex-row items-center justify-between gap-2 bg-[#F4F5F5] p-4 rounded-xl">
-                            <View className="flex flex-row items-center gap-5">
-                                <View className="bg-[#6A75D1] rounded-full p-4 flex items-center justify-center">
-                                    <Text className="text-lg text-white font-semibold">SBI</Text>
-                                </View>
-                                <View className="flex flex-col items-start p-1">
-                                    <Text className="text-xl text-zinc-900 font-semibold">Another bank name.. idk</Text>
-                                    <Text className="text-zinc-600 text-md">Another entry in the bank idk.. </Text>
-                                </View>
-                            </View>
-                            <View className="">
-                                <Image source={walletImg} resizeMode="contain" className="w-6 h-6 " />
-                            </View>
-                        </View>
+                        {data.items.map((item, index) => {
+                            if (index === 2) {
+                                return (
+                                    <View key={index} className="p-4">
+                                        {/* Render the content for the third item (bank account selection) */}
+                                        <View>
+                                            <Text className="text-2xl font-bold text-zinc-900">{item.open_state.body.title}</Text>
+                                            <Text className="text-lg text-zinc-600 mt-2">{item.open_state.body.subtitle}</Text>
 
-                        {/* Button to close the second bottom sheet */}
-                        <View className="w-full flex flex-row items-center justify-center mt-10">
-                            <TouchableOpacity onPress={handleSecondClosePress} className="w-full py-4 px-2 flex items-center justify-center rounded-xl bg-zinc-900">
-                                <Text className="text-zinc-100 text-2xl font-semibold">
-                                    Close Second Bottom Sheet
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
+                                            {/* Render bank account options */}
+                                            {item.open_state.body.items?.map((account, accountIndex) => (
+                                                <View key={accountIndex} className="flex flex-row items-center my-4">
+                                                    <View className="w-10 h-10 bg-zinc-200 rounded-full flex items-center justify-center">
+                                                        <Text className="text-lg">{"🏦"}</Text> {/* Fallback icon if none provided */}
+                                                    </View>
+                                                    <View className="ml-4">
+                                                        <Text className="text-lg font-semibold text-zinc-900">{account.title}</Text>
+                                                        <Text className="text-zinc-600">{account.subtitle}</Text>
+                                                    </View>
+                                                </View>
+                                            ))}
+
+                                            {/* Footer */}
+                                            <Text className="text-zinc-600 text-lg mt-4 text-center border-[1px] py-4 p-2 rounded-full">{item.open_state.body.footer}</Text>
+                                        </View>
+
+                                        {/* Button to close the second bottom sheet */}
+                                        <View className="w-full flex flex-row items-center justify-center mt-10">
+                                            <TouchableOpacity
+                                                onPress={handleSecondClosePress}
+                                                className="w-full py-4 px-2 flex items-center justify-center rounded-xl bg-zinc-900"
+                                            >
+                                                <Text className="text-white text-2xl font-semibold">
+                                                    {data.items[2].cta_text}
+                                                </Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                );
+                            }
+                            return null; // Skip rendering for other indices
+                        })}
+
+
                     </View>
                 </BottomSheetView>
             </BottomSheet>
