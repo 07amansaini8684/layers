@@ -101,6 +101,25 @@ const styles = StyleSheet.create({
   noPlansText: {
     color: '#6b7280',
   },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    marginBottom: 8,
+  },
+  footerButton: {
+    backgroundColor: '#1f2937',
+    alignItems: 'center',
+    paddingVertical: 16,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    borderRadius: 8,
+  },
+  footerButtonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '600',
+  },
 });
 
 const PaymentPlans: React.FC<PaymentPlansProps> = ({ data, buttonFunction }) => {
@@ -143,14 +162,14 @@ const PaymentPlans: React.FC<PaymentPlansProps> = ({ data, buttonFunction }) => 
   );
 
   const renderFooter = () => (
-    <TouchableOpacity onPress={buttonFunction} className='bg-zinc-900 flex items-center py-4 justify-center flex-row rounded-lg'>
-      <Text className='text-white text-xl font-semibold'>{body.footer}</Text>
+    <TouchableOpacity onPress={buttonFunction} style={styles.footerButton}>
+      <Text style={styles.footerButtonText}>{body.footer}</Text>
     </TouchableOpacity>
   );
 
   const renderHeader = () => (
-    <View style={{ marginBottom: 24 }} >
-      <Text className="text-2xl font-bold text-gray-800 capitalize leading-tight" style={styles.emiText}>{body.title}</Text>
+    <View style={{ marginBottom: 24 }}>
+      <Text style={styles.headerTitle}>{body.title}</Text>
       <Text style={styles.subtitleText}>{body.subtitle}</Text>
     </View>
   );
