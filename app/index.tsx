@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PaymentPlans from "@/components/PaymentsPlan";
 import { RenderSmallCards } from "@/components/SmallCards";
+import LoadingState from "@/components/LoadingState";
 
 // Define types for the API response
 type CardDetails = {
@@ -115,9 +116,7 @@ const App: React.FC = () => {
     // Render loading state if data is not yet fetched
     if (!apiData) {
         return (
-            <View className="flex-1 justify-center items-center">
-                <Text>Loading...</Text>
-            </View>
+           <LoadingState/>
         );
     }
 

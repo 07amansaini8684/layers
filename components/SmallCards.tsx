@@ -63,29 +63,13 @@ export const RenderSmallCards = () => {
       color: '#4A5568',
     },
     {
-      title: 'Max Amount',
-      value: formatCurrency(487891), // Using max_range from card data
-      icon: 'credit-card',
-      color: '#38A169',
-    },
-    {
-      title: 'Instant Transfer',
-      value: 'Within seconds', // Using footer text
-      icon: 'flash-on',
-      color: '#4299E1',
-    },
-    {
       title: 'EMI Plan 1',
       value: '₹4,247 /mo for 12 months', // Using the first EMI plan
       icon: 'payment',
       color: '#D53F8C',
     },
-    {
-      title: 'EMI Plan 2',
-      value: '₹5,580 /mo for 9 months', // Using the second EMI plan
-      icon: 'payment',
-      color: '#38A169',
-    },
+  
+
   ];
 
   return (
